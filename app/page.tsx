@@ -17,7 +17,7 @@ export default function Home() {
             </p>
             <p className="p-4">
               <Link href="/locator">
-                <Button className="max-w-max px-8 rounded-lg min-w-[220px] p-4 h-[80px] font-semibold text-2xl">Get Started</Button>
+                <Button className="max-w-max px-8 rounded-lg min-w-[220px] p-4 h-[45px] font-semibold">Get Started</Button>
               </Link>
             </p>
           </div>
