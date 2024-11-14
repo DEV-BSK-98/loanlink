@@ -16,7 +16,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis, distinctio impedit sit amet veniam labore consectetur consequuntur tempora quod dolores doloremque modi laborum possimus. Tempora minima quasi placeat harum.
             </p>
             <p className="p-4">
-              <Link href="/locator">
+              <Link href="/auth/login">
                 <Button className="max-w-max px-8 rounded-lg min-w-[220px] p-4 h-[45px] font-semibold">Get Started</Button>
               </Link>
             </p>

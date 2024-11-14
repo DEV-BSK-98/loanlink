@@ -14,6 +14,9 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
+import logo from '@/assets/image/pin.png'
+import Image from "next/image"
 
 const formSchema = z.object({
     email: z.string().email({ message: 'Invalid email address' }),
@@ -40,43 +43,48 @@ export default function Login () {
     }
 
     return (
-        <div className="w-[40%] h-[50%] p-4">
-            <div className="h-full w-full rounded-md flex overflow-hidden p-3 bg-slate-800">
-                <div className="w-[40%]"></div>
-                <div className="w-[60%] bg-slate-50 p-4 rounded-md overflow-y-auto">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Email</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="example@loanlink.com" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Password</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="***********" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <Button className="bg-orange-600 hover:bg-orange-700" type="submit">Submit</Button>
-                        </form>
-                    </Form>
+        <div className="w-full h-full p-4">
+            <div className="w-full h-[110px] mb-5">
+                <div className="h-full w-full flex justify-center items-center">
+                    <div className="h-[90px] w-[90px] rounded-full bg-white overflow-hidden">
+                        <Image src={logo} alt="LoanLink" className="w-full h-full object-cover" />
+                    </div>
                 </div>
             </div>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Email</FormLabel>
+                                <FormControl>
+                                    <Input className="bg-transparent border-slate-500/40 text-muted-foreground" placeholder="example@loanlink.com" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Password</FormLabel>
+                                <FormControl>
+                                    <Input className="bg-transparent border-slate-500/40 text-muted-foreground" placeholder="***********" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <div className="mt-5 py-4 flex flex-col gap-3">
+                        <Button size='lg' className="bg-orange-600 hover:bg-orange-700" type="submit">Login</Button>
+                        <Link href='/auth/register' className="text-muted-foreground text-[10px]">{"Don't Have An Account ? "} <span className="text-orange-500 hover:placeholder-opacity-75">Sign Up Instead</span></Link>
+                    </div>
+                </form>
+            </Form>
         </div>
     )
 }

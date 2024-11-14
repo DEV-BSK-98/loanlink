@@ -14,6 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -48,69 +49,67 @@ export default function Register () {
     }
 
     return (
-        <div className="w-[40%] h-[55%] p-4">
-            <div className="h-full w-full rounded-md flex overflow-hidden p-3 bg-slate-800">
-                <div className="w-[40%]"></div>
-                <div className="w-[60%] bg-slate-50 p-4 rounded-md overflow-y-auto">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-                            <FormField
-                                control={form.control}
-                                name="username"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Username</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="@loanLink" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Email</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="example@loanlink.com" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Password</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="***********" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="confirmPassword"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Confirm Password</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="**********" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <Button className="bg-orange-600 hover:bg-orange-700" type="submit">Submit</Button>
-                        </form>
-                    </Form>
-                </div>
-            </div>
+        <div className="w-full h-full p-4">
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+                    <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Username</FormLabel>
+                                <FormControl>
+                                    <Input className="text-muted-foreground bg-transparent border-slate-400/40" placeholder="@loanLink" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Email</FormLabel>
+                                <FormControl>
+                                    <Input className="text-muted-foreground bg-transparent border-slate-400/40" placeholder="example@loanlink.com" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Password</FormLabel>
+                                <FormControl>
+                                    <Input className="text-muted-foreground bg-transparent border-slate-400/40" placeholder="***********" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="confirmPassword"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-muted-foreground">Confirm Password</FormLabel>
+                                <FormControl>
+                                    <Input className="text-muted-foreground bg-transparent border-slate-400/40" placeholder="**********" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <div className="mt-5 py-4 flex flex-col gap-2">
+                        <Button type="submit" size='lg' className="bg-orange-600 hover:bg-orange-700">Register</Button>
+                        <Link href="/auth/login" className="text-muted-foreground text-[10px]">{"Already Have An Account ? "} <span className="text-orange-500 hover:opacity-75">Sign In Instead</span></Link>
+                    </div>
+                </form>
+            </Form>
         </div>
     )
 }
